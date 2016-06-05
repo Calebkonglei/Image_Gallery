@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+  <ul>
+     <li><a href="images/img1.jpg" title="image1">image1</a></li>
+     <li><a href="images/img2.jpg" title="image2">image2</a></li>
+     <li><a href="images/img3.jpg" >image3</a></li>
+  </ul>
+   <img src="images/kk.jpg" id="placeholder" alt="my image gallery"/>
+   <p id="description">Choose an img</p>
+  <script type="text/javascript">
+   var p=document.createElement('p');
+   var txt=document.createTextNode('hah,welcome to my image-gallery');
+   p.appendChild(txt);
+   var place=document.getElementById('placeholder');
+   place.parentNode.insertBefore(p,place);
+    function showPic(whichpic){
+      var source=whichpic.getAttribute('href');
+      var txt=whichpic.getAttribute('title');
+
+      var description=document.getElementById('description');
+      description.firstChild.nodeValue=txt;
+      place.setAttribute('src',source);
+    }
+    var a=document.getElementsByTagName('a');
+    var li=document.getElementsByTagName('li');
+    for(var i=0,l=a.length; i<l; i++){
+        a[i].onclick=function(evt){
+         var evt=event||window.event;
+         showPic(this);
+         return false;
+      }
+
+    }
+  </script>
+</body>
+</html>
